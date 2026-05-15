@@ -150,10 +150,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </button>
             </form>
 
-            <div class="text-center mt-4">
+<div class="text-center mt-4">
                 <small class="text-muted">
                     <i class="fas fa-info-circle"></i> الحساب الافتراضي: admin@sawti.ma / admin123
                 </small>
+            </div>
+            
+            <div class="text-center mt-2">
+                <a href="../index.html" class="text-decoration-none">
+                    <i class="fas fa-home"></i> العودة للصفحة الرئيسية
+                </a>
             </div>
         </div>
     </div>
