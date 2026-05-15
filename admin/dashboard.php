@@ -9,7 +9,9 @@ if (!isset($_SESSION['admin_id'])) {
 // إحصائيات
 $totalComplaints = $pdo->query("SELECT COUNT(*) FROM complaints")->fetchColumn();
 $pendingComplaints = $pdo->query("SELECT COUNT(*) FROM complaints WHERE status = 'pending'")->fetchColumn();
-$resolvedComplaints = $pdo->query("SELECT COUNT(*) FROM complaints WHERE status = 'resolved'")->fetchColumn();
+$processingComplaints = $pdo->query("SELECT COUNT(*) FROM complaints WHERE status = 'processing'")->fetchColumn();
+$doneComplaints = $pdo->query("SELECT COUNT(*) FROM complaints WHERE status = 'done'")->fetchColumn();
+$rejectedComplaints = $pdo->query("SELECT COUNT(*) FROM complaints WHERE status = 'rejected'")->fetchColumn();
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -72,8 +74,8 @@ $resolvedComplaints = $pdo->query("SELECT COUNT(*) FROM complaints WHERE status 
             </div>
             <div class="col-md-10 p-4">
                 <h2><i class="fas fa-tachometer-alt"></i> لوحة التحكم</h2>
-                <div class="row mt-4">
-                    <div class="col-md-4">
+<div class="row mt-4">
+                    <div class="col-md-3">
                         <div class="stat-card">
                             <div class="stat-number">
                                 <?php echo $totalComplaints; ?>
@@ -81,7 +83,7 @@ $resolvedComplaints = $pdo->query("SELECT COUNT(*) FROM complaints WHERE status 
                             <div>إجمالي الشكايات</div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="stat-card">
                             <div class="stat-number">
                                 <?php echo $pendingComplaints; ?>
@@ -89,10 +91,18 @@ $resolvedComplaints = $pdo->query("SELECT COUNT(*) FROM complaints WHERE status 
                             <div>قيد الانتظار</div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="stat-card">
                             <div class="stat-number">
-                                <?php echo $resolvedComplaints; ?>
+                                <?php echo $processingComplaints; ?>
+                            </div>
+                            <div>قيد المعالجة</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number">
+                                <?php echo $doneComplaints; ?>
                             </div>
                             <div>تمت المعالجة</div>
                         </div>
