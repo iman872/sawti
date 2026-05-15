@@ -66,12 +66,12 @@ $complaints = $pdo->query("SELECT c.*, d.name_ar as dept_name FROM complaints c 
             color: white;
         }
 
-        .status-processing {
+.status-processing {
             background: #3b82f6;
             color: white;
         }
 
-        .status-resolved {
+        .status-done {
             background: #10b981;
             color: white;
         }
@@ -148,10 +148,10 @@ $complaints = $pdo->query("SELECT c.*, d.name_ar as dept_name FROM complaints c 
                                                     class="form-control"
                                                     rows="3"><?php echo $c['admin_response']; ?></textarea></div>
                                             <div class="mb-3"><label>تغيير الحالة</label>
-                                                <select name="status" class="form-control">
+<select name="status" class="form-control">
                                                     <option value="pending" <?php echo $c['status'] == 'pending' ? 'selected' : ''; ?>>قيد الانتظار</option>
                                                     <option value="processing" <?php echo $c['status'] == 'processing' ? 'selected' : ''; ?>>قيد المعالجة</option>
-                                                    <option value="resolved" <?php echo $c['status'] == 'resolved' ? 'selected' : ''; ?>>تمت المعالجة</option>
+                                                    <option value="done" <?php echo $c['status'] == 'done' ? 'selected' : ''; ?>>تمت المعالجة</option>
                                                     <option value="rejected" <?php echo $c['status'] == 'rejected' ? 'selected' : ''; ?>>مرفوض</option>
                                                 </select>
                                             </div>
